@@ -7,14 +7,14 @@ from src.logger import logging
 from src.exceptions import CustomException
 from src.utils import load_csv
 
+from src.components.data_transformation import DatatransformationConfig, DataTransformation
+
 from dataclasses import dataclass
 
 
 @dataclass
 class DataIngestionConfig:
-    raw_data_path: str= os.path.join("artifacts/CSV_files", "raw_data_csv")
-    train_data_path: str= os.path.join("artifacts/CSV_files", "train_data.csv")
-    test_data_path: str= os.path.join("artifacts/CSV_files", "test_data.csv")
+    raw_data_path: str= os.path.join("artifacts/CSV_files", "raw_data.csv")
 
 class DataIngestion:
     def __init__(self):
@@ -29,11 +29,16 @@ class DataIngestion:
             os.makedirs("artifacts/CSV_files", exist_ok=True) #creating a CSV_files directory
 
             combined_df.to_csv(self.ingestion_config.raw_data_path) #saving combined dataframe ton raw_data.csv 
-
+            return combined_df
 
         except Exception as e:
             raise CustomException(e,sys)
         
 if __name__=='__main__':
     data= DataIngestion()
-    data.initiate_data_ingestion()
+    df=data.initiate_data_ingestion()
+
+    data_transformation= DataTransformation()
+    data_transformation.DataDropping(df)
+    data_transformation.Datasplit()
+
