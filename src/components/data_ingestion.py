@@ -41,4 +41,5 @@ if __name__=='__main__':
     data_transformation= DataTransformation()
     data_transformation.DataDropping(df)
     data_transformation.Datasplit()
+    data_transformation.Initiate_data_transformation()
 
