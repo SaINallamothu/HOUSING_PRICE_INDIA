@@ -2,3 +2,5 @@ pandas
 scikit-learn
 dill
 numpy
+
+#-e  #this will connect this app to setup script, where it gets packaged or used for packaging tools
