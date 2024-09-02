@@ -91,7 +91,7 @@ class DataTransformation:
     def get_data_transformer_object(self):
         try:
             numerical_columns= [ 'Area', 'No. of Bedrooms', 'MaintenanceStaff', 'Gymnasium','SwimmingPool', 'ClubHouse', '24X7Security', 'CarParking',"Children'splayarea", 'LiftAvailable']
-            categorical_columns=[ 'City']
+            categorical_columns=[ 'City','Location']
 
             num_pipeline= Pipeline(
                 steps=[
