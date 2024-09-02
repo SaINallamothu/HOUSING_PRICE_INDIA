@@ -13,6 +13,7 @@ from sklearn.compose import ColumnTransformer #used to create a pipeline to do t
 from sklearn.impute import SimpleImputer #to deal with missing values
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder,StandardScaler, OrdinalEncoder
+from category_encoders import cat_boost,CatBoostEncoder
 
 from dataclasses import dataclass
 
@@ -103,7 +104,8 @@ class DataTransformation:
             cat_pipeline= Pipeline(
                 steps=[
                 ("imputer",SimpleImputer(strategy="most_frequent")),
-                ("one_hot_encoder",OneHotEncoder(handle_unknown='ignore')), #if the test data has new categories like new location names in test data which are not in train, then it will ignore that, instead of raising a Value error 
+                #("one_hot_encoder",OneHotEncoder(handle_unknown='ignore')), #if the test data has new categories like new location names in test data which are not in train, then it will ignore that, instead of raising a Value error 
+                ("cat-boost-encoder",cat_boost.CatBoostEncoder(handle_missing="value", handle_unknown="value")),
                 ("scaler",StandardScaler(with_mean=False))
                 ]
             )
@@ -158,12 +160,13 @@ class DataTransformation:
 
             logging.info("Applying preprocessing tranformation on train and test dataframes")
 
-            input_feature_train_arr= preprocessing_obj.fit_transform(input_feature_train_df)
-            input_feature_test_arr= preprocessing_obj.transform(input_feature_test_df)
-            
+           
             target_feature_train_arr= np.array(target_feature_train_df)
             target_feature_test_arr= np.array(target_feature_test_df)
 
+            input_feature_train_arr= preprocessing_obj.fit_transform(input_feature_train_df,target_feature_train_arr)
+            input_feature_test_arr= preprocessing_obj.transform(input_feature_test_df)
+            
             print("train arr")
             print(input_feature_train_arr.shape)
             print(target_feature_train_arr.shape)

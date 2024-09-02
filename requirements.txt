@@ -3,5 +3,5 @@ scikit-learn
 dill
 numpy
 catboost
-
+category-encoders
 #-e  #this will connect this app to setup script, where it gets packaged or used for packaging tools

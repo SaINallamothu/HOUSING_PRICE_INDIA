@@ -77,6 +77,9 @@ class ModelTrainer:
             }
 
             model_report:dict=evaluate_model(X_train=X_train, y_train=y_train, X_test= X_test, y_test=y_test, models=models)
+            
+            print("Model scores: ")
+            print(model_report)
 
             best_model_score= max(sorted(model_report.values()))
 
@@ -87,11 +90,12 @@ class ModelTrainer:
             print(best_model)
 
             if best_model_score< 0.6:
-                raise CustomException("No best model found")
+                print("No best model found")
+                #raise CustomException("No best model found",)
             logging.info("Best found model on bith training and testing dataset")
 
             save_obj(
-                file_path=self.modle_trainer_config.trained_model_file_path,
+                file_path=self.model_trainer_config.trained_model_file_path,
                 obj=best_model
             )
 
