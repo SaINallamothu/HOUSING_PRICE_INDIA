@@ -8,6 +8,7 @@ from src.exceptions import CustomException
 from src.utils import load_csv
 
 from src.components.data_transformation import DatatransformationConfig, DataTransformation
+from src.components.model_trainer import ModelTrainerConfig, ModelTrainer
 
 from dataclasses import dataclass
 
@@ -41,5 +42,8 @@ if __name__=='__main__':
     data_transformation= DataTransformation()
     data_transformation.DataDropping(df)
     data_transformation.Datasplit()
-    data_transformation.Initiate_data_transformation()
+    train_arr, test_arr,save_obj=data_transformation.Initiate_data_transformation()
+
+    model= ModelTrainer()
+    model.initiate_model_training(train_arr, test_arr)
 

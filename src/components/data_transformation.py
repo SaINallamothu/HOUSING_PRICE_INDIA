@@ -103,7 +103,7 @@ class DataTransformation:
             cat_pipeline= Pipeline(
                 steps=[
                 ("imputer",SimpleImputer(strategy="most_frequent")),
-                ("one_hot_encoder",OrdinalEncoder()), #if the test data has new categories like new location names in test data which are not in train, then it will ignore that, instead of raising a Value error 
+                ("one_hot_encoder",OneHotEncoder(handle_unknown='ignore')), #if the test data has new categories like new location names in test data which are not in train, then it will ignore that, instead of raising a Value error 
                 ("scaler",StandardScaler(with_mean=False))
                 ]
             )
@@ -154,6 +154,8 @@ class DataTransformation:
             print(input_feature_train_df.shape)
             print(target_feature_train_df.shape)
 
+            print(input_feature_train_df.head(5), target_feature_test_df.head(5))
+
             logging.info("Applying preprocessing tranformation on train and test dataframes")
 
             input_feature_train_arr= preprocessing_obj.fit_transform(input_feature_train_df)
@@ -162,12 +164,19 @@ class DataTransformation:
             target_feature_train_arr= np.array(target_feature_train_df)
             target_feature_test_arr= np.array(target_feature_test_df)
 
-            print("train reshaped arr")
-            print(input_feature_train_arr)
-            print(target_feature_train_arr.reshape(-1,1).shape)
+            print("train arr")
+            print(input_feature_train_arr.shape)
+            print(target_feature_train_arr.shape)
 
-            train_arr = np.c_[input_feature_train_arr, target_feature_train_arr.reshape(-1,1)]
-            test_arr = np.c_[input_feature_test_arr, target_feature_test_arr.reshape(-1,1)]
+            target_feature_train_arr=target_feature_train_arr.reshape(-1, 1) 
+            print("reshaped train arr")
+            print(target_feature_train_arr.shape)
+
+
+            train_arr = np.concatenate((input_feature_train_arr, target_feature_train_arr.reshape(-1, 1)), axis=1)
+            print(train_arr)
+            #train_arr = np.c_[input_feature_train_arr, target_feature_train_arr]
+            test_arr = np.c_[input_feature_test_arr, target_feature_test_arr]
 
             logging.info(f"Saved preprocessing object")
 
