@@ -12,7 +12,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.compose import ColumnTransformer #used to create a pipeline to do tranformation
 from sklearn.impute import SimpleImputer #to deal with missing values
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import OneHotEncoder,StandardScaler, OrdinalEncoder
+from sklearn.preprocessing import OneHotEncoder,StandardScaler, OrdinalEncoder, TargetEncoder
 from category_encoders import cat_boost,CatBoostEncoder
 
 from dataclasses import dataclass
@@ -105,7 +105,8 @@ class DataTransformation:
                 steps=[
                 ("imputer",SimpleImputer(strategy="most_frequent")),
                 #("one_hot_encoder",OneHotEncoder(handle_unknown='ignore')), #if the test data has new categories like new location names in test data which are not in train, then it will ignore that, instead of raising a Value error 
-                ("cat-boost-encoder",cat_boost.CatBoostEncoder(handle_missing="value", handle_unknown="value")),
+                #("cat-boost-encoder",cat_boost.CatBoostEncoder(handle_missing="value", handle_unknown="value")),
+                ("target-encoding", TargetEncoder(smooth="auto")), #smooth="auto"
                 ("scaler",StandardScaler(with_mean=False))
                 ]
             )

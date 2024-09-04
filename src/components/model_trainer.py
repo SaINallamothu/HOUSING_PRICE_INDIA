@@ -10,6 +10,7 @@ from sklearn.ensemble import (
     RandomForestRegressor,
 )
 from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import PolynomialFeatures
 from sklearn.metrics import r2_score
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.tree import DecisionTreeRegressor
@@ -58,6 +59,10 @@ class ModelTrainer:
             print("dataframe has follwing shape {} & columns: {}".format(y_test,y_test.shape))
             '''
             
+            print("train_arr has follwing shape {} & columns: {}".format(train_arr,train_arr.shape))
+            print("test_Arr has follwing shape {} & columns: {}".format(test_arr,test_arr.shape))
+
+
             X_train, y_train, X_test, y_test=(
                 train_arr[:, :-1],
                 train_arr[:, -1],
@@ -66,6 +71,15 @@ class ModelTrainer:
             ) 
             logging.info("Read train and test data completed")
             
+            print("################======================================###################")
+
+            print("dataframe has follwing shape {} & columns: {}".format(X_train,X_train.shape))
+            print("dataframe has follwing shape {} & columns: {}".format(y_train,y_train.shape))
+
+
+            print("dataframe has follwing shape {} & columns: {}".format(X_test,X_test.shape))
+            print("dataframe has follwing shape {} & columns: {}".format(y_test,y_test.shape))
+
             models = {
                 "Random Forest": RandomForestRegressor(),
                 "Decision Tree": DecisionTreeRegressor(),
@@ -73,7 +87,9 @@ class ModelTrainer:
                 "Linear Regression": LinearRegression(),
                 #"XGBRegressor": XGBRegressor(),
                 #"CatBoosting Regressor": CatBoostRegressor(verbose=False),
+                "KNeighborsRegressor":KNeighborsRegressor(),
                 "AdaBoost Regressor": AdaBoostRegressor(),
+                #"PolynomialRegression":PolynomialFeatures(),
             }
 
             model_report:dict=evaluate_model(X_train=X_train, y_train=y_train, X_test= X_test, y_test=y_test, models=models)
