@@ -51,16 +51,19 @@ class DataTransformation:
                 'Gasconnection', 'AC', 'Wifi','BED', 'VaastuCompliant', 'Microwave', 'GolfCourse', 'TV',
                 'DiningTable', 'Sofa', 'Wardrobe', 'Refrigerator', 'City']
             """
+            dataframe['No_of_Bedrooms']=dataframe['No. of Bedrooms']
+            dataframe['Security']=dataframe['24X7Security']
+            dataframe['Children_playarea']=dataframe["Children'splayarea"]
 
-
-
-
-            dataframe.drop(columns=['Resale', 'LandscapedGardens','JoggingTrack', 'RainWaterHarvesting', 'IndoorGames', 'ShoppingMall',
+            dataframe.drop(columns=["Children'splayarea",'24X7Security','No. of Bedrooms','Location','Resale', 'LandscapedGardens','JoggingTrack', 'RainWaterHarvesting', 'IndoorGames', 'ShoppingMall',
                 'Intercom', 'SportsFacility', 'ATM', 'School','PowerBackup', 'StaffQuarter',
                 'Cafeteria', 'MultipurposeRoom', 'Hospital', 'WashingMachine',
                 'Gasconnection', 'AC', 'Wifi','BED', 'VaastuCompliant', 'Microwave', 'GolfCourse', 'TV',
                 'DiningTable', 'Sofa', 'Wardrobe', 'Refrigerator'],inplace= True)
             logging.info("'Resale', 'LandscapedGardens','JoggingTrack', 'RainWaterHarvesting', 'IndoorGames', 'ShoppingMall','Intercom', 'SportsFacility', 'ATM', 'School','PowerBackup', 'StaffQuarter','Cafeteria', 'MultipurposeRoom', 'Hospital', 'WashingMachine','Gasconnection', 'AC', 'Wifi','BED', 'VaastuCompliant', 'Microwave', 'GolfCourse', 'TV', 'DiningTable', 'Sofa', 'Wardrobe', 'Refrigerator', 'City' these columns has been dropped")
+            
+            
+
 
             s = dataframe.shape
             print("Shape of df after columns removed: {}".format(s))
@@ -92,7 +95,7 @@ class DataTransformation:
     def get_data_transformer_object(self):
         try:
             numerical_columns= [ 'Area', 'No. of Bedrooms', 'MaintenanceStaff', 'Gymnasium','SwimmingPool', 'ClubHouse', '24X7Security', 'CarParking',"Children'splayarea", 'LiftAvailable']
-            categorical_columns=[ 'City','Location']
+            categorical_columns=[ 'City']
 
             num_pipeline= Pipeline(
                 steps=[
