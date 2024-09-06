@@ -3,17 +3,17 @@ import pandas as pd
 import os
 
 from src.exceptions import CustomException
-from src.utils import load_object
+from src.utils import load_obj
 
-class PredcitPipeline:
+class PredictPipeline:
     def __init__(self):
         pass
     def predict(self, feature):
         try:
             model_path=os.path.join("artifacts","model.pkl")
             preprocessor_path=os.path.join('artifacts','preprocessor.pkl')
-            model= load_object(file_path= model_path)
-            preprocessor= load_object(file_path= preprocessor_path)
+            model= load_obj(file_path= model_path)
+            preprocessor= load_obj(file_path= preprocessor_path)
             data_scaled= preprocessor.transform(feature)
             preds= model.predict(data_scaled)
             return preds
@@ -23,7 +23,7 @@ class PredcitPipeline:
 ## using this class we are going to mapp whatever the input values captured by home.html to our self
 class CustomData():
     def __init__(self,
-        Price: int,
+        #Price: int,
         Area: int,
         No_of_Bedrooms: int,
         MaintenanceStaff: int,
@@ -35,7 +35,7 @@ class CustomData():
         Children_playarea: int,
         LiftAvailable: int,
         City: str):
-        self.Price= Price
+        #self.Price= Price
         self.Area=Area
         self.No_of_Bedrooms=No_of_Bedrooms
         self.MaintenanceStaff= MaintenanceStaff
@@ -53,7 +53,7 @@ class CustomData():
 
         try:
             custom_data_input_dict={
-                        "Price": [self.Price],
+                        #"Price": [self.Price],
                         "Area": [self.Area],
                         "No_of_Bedrooms": [self.No_of_Bedrooms],
                         "MaintenanceStaff": [self.MaintenanceStaff],
