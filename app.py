@@ -31,7 +31,7 @@ def predict_datapoint():
             ClubHouse= request.form.get('ClubHouse'),
             Security= request.form.get('Security'),
             CarParking= request.form.get('CarParking'),
-            Children_playarea= request.form.get('Children_playarea'),
+            Children_playarea= request.form.get("Children_playarea"),
             LiftAvailable= request.form.get('LiftAvailable'),
             City= request.form.get('City')
         )      # rerturns a DF &&& using request.form.get we are reading the data from home.html page

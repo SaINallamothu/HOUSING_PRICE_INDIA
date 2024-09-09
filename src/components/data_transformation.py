@@ -54,8 +54,9 @@ class DataTransformation:
             dataframe['No_of_Bedrooms']=dataframe['No. of Bedrooms']
             dataframe['Security']=dataframe['24X7Security']
             dataframe['Children_playarea']=dataframe["Children'splayarea"]
-
-            dataframe.drop(columns=["Children'splayarea",'24X7Security','No. of Bedrooms','Location','Resale', 'LandscapedGardens','JoggingTrack', 'RainWaterHarvesting', 'IndoorGames', 'ShoppingMall',
+            
+            
+            dataframe.drop(columns=['No. of Bedrooms','24X7Security',"Children'splayarea",'Location','Resale', 'LandscapedGardens','JoggingTrack', 'RainWaterHarvesting', 'IndoorGames', 'ShoppingMall',
                 'Intercom', 'SportsFacility', 'ATM', 'School','PowerBackup', 'StaffQuarter',
                 'Cafeteria', 'MultipurposeRoom', 'Hospital', 'WashingMachine',
                 'Gasconnection', 'AC', 'Wifi','BED', 'VaastuCompliant', 'Microwave', 'GolfCourse', 'TV',
@@ -94,7 +95,7 @@ class DataTransformation:
 
     def get_data_transformer_object(self):
         try:
-            numerical_columns= [ 'Area', 'No. of Bedrooms', 'MaintenanceStaff', 'Gymnasium','SwimmingPool', 'ClubHouse', '24X7Security', 'CarParking',"Children'splayarea", 'LiftAvailable']
+            numerical_columns= [ 'Area', 'No_of_Bedrooms', 'MaintenanceStaff', 'Gymnasium','SwimmingPool', 'ClubHouse', 'Security', 'CarParking','Children_playarea', 'LiftAvailable']
             categorical_columns=[ 'City']
 
             num_pipeline= Pipeline(
