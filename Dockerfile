@@ -8,4 +8,4 @@ RUN apt-get update && apt-get install ffmpeg libsm6 libxext6 unzip -y && pip ins
 #ffmpeg, libsm6, libxext6, and unzip are system-level dependencies that might be required for 
 #the Python application or for handling media files (like images or videos).
 
-CMD ["python3", "app.py"]
+CMD ["python3", "application.py"]
