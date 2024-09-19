@@ -3,6 +3,19 @@
 ## Objective:
 
 Objective of this project is to predict a Price of Home in a given City, basing the values of independent variables like City, Area, No. of Bedrooms, Lift Availability, Car parking, Security, Children play area, Clubhouse, Maintenance Staff, Swimming pool.
+## Tech Stack
+
+Here are the technologies I use:
+
+<p align="left">
+    <img src="https://github.com/devicons/devicon/blob/v2.16.0/icons/python/python-original.svg" alt="Python" width="40" height="40"/>
+  <img src="https://github.com/devicons/devicon/blob/v2.16.0/icons/html5/html5-original.svg" alt="html" width="40" height="40"/>
+    <img src="https://github.com/devicons/devicon/blob/v2.16.0/icons/flask/flask-original-wordmark.svg" alt="Flask" width="40" height="40"/>  
+  <img src="https://github.com/devicons/devicon/blob/v2.16.0/icons/docker/docker-original.svg" alt="Docker" width="40" height="40"/>
+  <img src="https://github.com/devicons/devicon/blob/v2.16.0/icons/githubactions/githubactions-original.svg" alt="GitHub Actions" width="40" height="40"/>
+    <img src="https://github.com/devicons/devicon/blob/v2.16.0/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" width="40" height="40">
+</p>
+
 
 ### Project Structure
 
