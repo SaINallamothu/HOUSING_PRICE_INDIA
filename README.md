@@ -4,6 +4,54 @@
 
 Objective of this project is to predict a Price of Home in a given City, basing the values of independent variables like City, Area, No. of Bedrooms, Lift Availability, Car parking, Security, Children play area, Clubhouse, Maintenance Staff, Swimming pool.
 
+### Project Structure
+
+```bash
+.
+├── Dockerfile
+├── Notebook
+│   └── EDA.ipynb
+├── README.md
+├── application.py
+├── artifacts
+│   ├── CSV_files
+│   │   ├── raw_data.csv
+│   │   ├── raw_data01.csv
+│   │   ├── test_data.csv
+│   │   └── train_data.csv
+│   ├── base_files
+│   │   ├── Bangalore.csv
+│   │   ├── Chennai.csv
+│   │   ├── Delhi.csv
+│   │   ├── Hyderabad.csv
+│   │   ├── Kolkata.csv
+│   │   └── Mumbai.csv
+│   ├── model.pkl
+│   └── preprocessor.pkl
+├── logs
+├── requirements.txt
+├── setup.py
+├── src
+│   ├── __init__.py
+│   ├── __pycache__
+│   ├── components
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   ├── data_ingestion.py
+│   │   ├── data_transformation.py
+│   │   ├── model_trainer.py
+│   │   └── pipeline
+│   │       ├── __init__.py
+│   │       ├── __pycache__
+│   │       └── predict_pipeline.py
+│   ├── exceptions.py
+│   ├── logger.py
+│   └── utils.py
+└── templates
+    ├── home.html
+    └── index.html
+```
+
 ## Implementation:
 
 1.	Data source:
